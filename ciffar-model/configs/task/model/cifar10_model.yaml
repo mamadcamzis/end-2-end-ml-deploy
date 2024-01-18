@@ -1,1 +1,8 @@
-# You need to fill out this configuration file
+
+defaults:
+  - backbone: resnet34
+  - adapter: linear_2048_10
+  - head: identity_head
+
+_target_: models.CIFAR10Model
+

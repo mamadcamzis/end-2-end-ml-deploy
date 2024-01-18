@@ -1,1 +1,8 @@
-# You need to fill out this configuration file
+
+defaults:
+  - model: cifar10-model
+  - optimizer: adam
+  - loss_function: cross_entropy
+
+_target_: tasks.CIFAR10Classification
+
