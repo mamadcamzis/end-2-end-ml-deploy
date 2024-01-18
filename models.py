@@ -1,6 +1,5 @@
 
 
-
 from torch import Tensor, nn
 
 
@@ -18,4 +17,8 @@ class SimpleModel(nn.Module):
         x = self.head(x)
         return x
 
-    
+
+class CIFAR10Model(nn.Module):
+    """
+    Hint: It is going to be very similar to SimpleModel
+    """

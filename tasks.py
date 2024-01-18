@@ -33,7 +33,7 @@ class MNISTClassification(TrainingTask):
     def forward(self, x) -> Tensor:
         return self.model(x)
 
-    def training_step(self, batch, batch_idx) -> Tensor:
+    def training_step(self, batch, _) -> Tensor:
         images, labels = batch
         logits = self(images)
         loss = self.loss_function(logits, labels)
@@ -42,14 +42,20 @@ class MNISTClassification(TrainingTask):
         self.log("train_accuracy", self.train_accuracy, on_step=False, on_epoch=True)
         return loss
 
-    def validation_step(self, batch, batch_idx):
+    def validation_step(self, batch, _):
         images, labels = batch
         preds = self(images)
         self.validaiton_accuracy(preds, labels)
         self.log("validation_accuracy", self.validaiton_accuracy, on_step=False, on_epoch=True)
 
-    def test_step(self, batch, batch_idx):
+    def test_step(self, batch, _):
         images, labels = batch
         preds = self(images)
         self.test_accuracy(preds, labels)
         self.log("test_accuracy", self.test_accuracy, on_step=False, on_epoch=True)
+
+
+class CIFAR10Classification(TrainingTask):
+    """
+    Hint: It is going to be very similar to MNISTClassification
+    """
